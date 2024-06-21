@@ -6,59 +6,48 @@
 }
 
 /* Убираем внутренние отступы */
-ul,
-ol {
+:where(ul, ol) {
   padding: 0;
 }
 
 /* Убираем внешние отступы */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
+:where(body, h1, h2, h3, h4, p, ul, ol, li, figure, figcaption, blockquote, dl, dd) {
   margin: 0;
 }
 
 /* Выставляем основные настройки по-умолчанию для body */
-body {
+:where(body) {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
 }
 
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul,
-ol {
+:where(ul, ol) {
   list-style: none;
 }
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a {
+:where(a) {
   text-decoration: none;
+  color: inherit;
 }
 
 /* Упрощаем работу с изображениями */
-img {
+:where(img) {
   display: block;
 }
 
 /* Наследуем шрифты для инпутов и кнопок */
-input,
-button,
-textarea,
-select {
+:where(input, button, textarea, select) {
   font: inherit;
+}
+
+:where(button) {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */

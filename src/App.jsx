@@ -1,8 +1,5 @@
-import Inner from './Inner'
+import Inner from './Inner';
 
-const App = () => 
-(<Inner/>)
-  
+const App = () => <Inner />;
 
-
-export default App
+export default App;

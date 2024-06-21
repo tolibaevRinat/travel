@@ -1,0 +1,23 @@
+@charset 'UTF-8';
+
+@import './modules';
+
+.title {
+  font-family: Cormorant;
+  @include adaptiveValue(font-size, 48, 24, $maxWidthContainer, 320);
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+}
+.text {
+  @include adaptiveValue(font-size, 20, 14, $maxWidthContainer, 320);
+  font-weight: 300;
+  color: #909090;
+}
+.big-title {
+  font-family: Cormorant;
+  @include adaptiveValue(font-size, 96, 32, $maxWidthContainer, 320);
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+}

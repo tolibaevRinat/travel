@@ -1,0 +1,151 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.header {
+  width: 100%;
+}
+.wrapper {
+  z-index: 50;
+  width: 100%;
+  background-color: $backgroundColor;
+}
+.body {
+  padding-top: toRem(14);
+  @media (min-width: toEm($mobile)) {
+    padding-top: toRem(20);
+  }
+  @media (min-width: toEm(1440.98)) {
+    padding-top: toRem(44);
+  }
+  @media (max-width: toEm($tablet)) {
+    justify-content: space-between;
+  }
+}
+.menu {
+  gap: toRem(34);
+  @media (min-width: toEm(1440.98)) {
+    gap: toRem(44);
+  }
+
+  position: fixed;
+  top: -150%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $backgroundColor;
+  z-index: 100;
+
+  padding: toRem(80) toRem(20);
+
+  flex-direction: column;
+  align-items: center;
+
+  visibility: hidden;
+  filter: opacity(0);
+
+  overflow-y: auto;
+
+  transition: top 0.3s, visibility 0.3s, filter 0.3s;
+
+  @media (min-width: toEm($tablet)) {
+    position: static;
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    visibility: visible;
+    filter: opacity(1);
+
+    flex-wrap: wrap;
+    overflow-y: visible;
+  }
+}
+.logo {
+  font-family: 'Cormorant';
+  font-size: toRem(26);
+  @media (min-width: toEm(1440.98)) {
+    font-size: toRem(32);
+  }
+  color: #fff;
+  letter-spacing: toRem(2);
+
+  text-wrap: nowrap;
+}
+.item {
+  font-size: toRem(26);
+  @media (min-width: toEm($tablet)) {
+    font-size: toRem(14);
+    color: #a4a4a4;
+  }
+  @media (min-width: toEm(1440.98)) {
+    font-size: toRem(16);
+  }
+  text-transform: uppercase;
+
+  @media (any-hover: hover) {
+    transition: color 0.3s;
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: toRem(2);
+      background-color: #fff;
+      transform-origin: right;
+      position: absolute;
+
+      bottom: toRem(-3);
+
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      transition: transform 0.3s;
+    }
+    &:hover {
+      color: #fff;
+    }
+    &:hover::before {
+      transform: translateX(-50%) scaleX(1);
+      transform-origin: left;
+    }
+  }
+}
+.menu_icon {
+  display: flex;
+  width: toRem(32);
+  height: toRem(24);
+  z-index: 101;
+
+  span {
+    display: block;
+    width: 100%;
+    height: toRem(3);
+    border-radius: toRem(8);
+    background-color: #fff;
+
+    transition: rotate 0.3s, scale 0.3s;
+  }
+  @media (min-width: toEm($tablet)) {
+    display: none;
+  }
+}
+:global {
+  .show {
+    visibility: visible;
+    filter: opacity(1);
+    top: 0%;
+  }
+  .active {
+    span:nth-child(1) {
+      top: calc(50% - toRem(1.5));
+      rotate: -45deg;
+    }
+    span:nth-child(2) {
+      scale: 0;
+    }
+    span:nth-child(3) {
+      bottom: calc(50% - toRem(1.5));
+      rotate: 45deg;
+    }
+  }
+}

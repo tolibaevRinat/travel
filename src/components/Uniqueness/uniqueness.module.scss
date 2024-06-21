@@ -1,0 +1,66 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.title {
+  @include adaptiveValue(margin-bottom, 64, 20, $maxWidthContainer, 320);
+}
+.list {
+  margin-bottom: toRem(20);
+}
+.item {
+  padding-top: toRem(24);
+  padding-bottom: toRem(24);
+  @media (min-width: toEm($tablet)) {
+    padding-bottom: toRem(80);
+  }
+
+  border-top: toRem(1) solid #48484a;
+
+  @media (min-width: toEm($tablet)) {
+    display: flex;
+    align-items: center;
+    gap: toRem(20);
+  }
+}
+.main {
+  flex-grow: 1;
+  @media (max-width: toEm($tablet)) {
+    margin-bottom: toRem(20);
+  }
+}
+.number {
+  font-size: toRem(16);
+  color: #909090;
+}
+.subtitle {
+  font-weight: 300;
+  @include adaptiveValue(font-size, 24, 18, $maxWidthContainer, 320);
+
+  @include adaptiveValue(padding-left, 65, 20, $maxWidthContainer, 320);
+}
+.text {
+  flex-basis: toRem(480);
+  color: #909090;
+}
+.btn {
+  width: toRem(160);
+  min-height: toRem(40);
+  padding: toRem(5);
+
+  border-radius: toRem(12);
+  border: toRem(1) solid #c8ae97;
+
+  color: #c8ae97;
+  font-size: toRem(14);
+
+  align-self: flex-end;
+
+  @media (any-hover: hover) {
+    transition: border 0.3s, color 0.3s;
+    &:hover {
+      color: #fff;
+      border: toRem(1) solid #fff;
+    }
+  }
+}
