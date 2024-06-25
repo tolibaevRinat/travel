@@ -16,11 +16,11 @@
   .szh-accordion__item.szh-accordion__item--status-entered .szh-accordion__item-btn {
     &::before {
       rotate: 60deg;
-      right: toRem(20);
+      right: toRem(18);
     }
     &::after {
       rotate: -60deg;
-      right: toRem(25);
+      right: toRem(23);
     }
   }
   .szh-accordion__item-btn {

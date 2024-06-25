@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 
 import styles from './questions.module.scss';
@@ -32,7 +31,7 @@ export const Questions = () => {
         <h2 className={`${styles.title} title`}>Часто задаваемые вопросы</h2>
         <Accordion transition transitionTimeout={250}>
           {questions.map((question, index) => (
-            <AccordionItem key={index} header={question.title}>
+            <AccordionItem key={index} header={question.title} initialEntered={index === 0}>
               {question.question}
             </AccordionItem>
           ))}

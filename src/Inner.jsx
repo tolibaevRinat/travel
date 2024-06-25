@@ -7,6 +7,7 @@ import { Uniqueness } from './components/Uniqueness';
 import { Reserv } from './components/Reserv';
 import { ReviewsItem } from './components/ReviewsItem';
 import { Questions } from './components/Questions';
+import { Footer } from './components/Footer';
 
 import { getSliceReviews, getAllReviews } from './redux/slices/reviewsSlice';
 
@@ -56,6 +57,7 @@ const Inner = () => {
         </section>
         <Questions />
       </main>
+      <Footer/>
     </div>
   );
 };
