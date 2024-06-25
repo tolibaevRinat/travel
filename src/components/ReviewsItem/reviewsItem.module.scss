@@ -1,0 +1,44 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.item {
+  padding: toRem(10);
+  @media (min-width: toEm($mobile)) {
+    padding: toRem(20);
+  }
+
+  border: toRem(1) solid #383838;
+  border-radius: toRem(16);
+  height: 100%;
+}
+.top {
+  margin-bottom: toRem(16);
+}
+.avatar {
+  border-radius: 50%;
+  width: toRem(48);
+  height: toRem(48);
+
+  color: #fff;
+  font-size: toRem(12);
+}
+.name {
+  font-size: toRem(16);
+  line-height: calc(19 / 16);
+}
+.status,
+.date {
+  font-size: toRem(14);
+  font-weight: 300;
+  color: #909090;
+}
+.center {
+  margin-bottom: toRem(16);
+  gap: toRem(12);
+}
+.text {
+  font-size: toRem(16);
+  font-weight: 300;
+  line-height: calc(19 / 16);
+}

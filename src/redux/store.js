@@ -1,5 +1,6 @@
-// import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import reviews from './slices/reviewsSlice';
 
-// export const store = configureStore({
-//   reducer: { cart, favorite, product },
-// });
+export const store = configureStore({
+  reducer: { reviews },
+});

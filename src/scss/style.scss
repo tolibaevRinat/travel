@@ -21,3 +21,38 @@
   color: #fff;
   text-transform: uppercase;
 }
+.reviews {
+  @include adaptiveValue(margin-bottom, 100, 40, $maxWidthContainer, $mobile);
+}
+.reviews__list {
+  display: grid;
+  gap: toRem(20);
+
+  margin-bottom: toRem(24);
+
+  @media (min-width: toEm($mobile)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: toEm($maxWidthContainer)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.reviews__btn {
+  align-self: center;
+  width: toRem(80);
+  min-height: toRem(38);
+  padding: toRem(5);
+  font-size: toRem(16);
+  color: #fff;
+
+  border-radius: toRem(8);
+  background-color: #242424;
+
+  @media (any-hover: hover) {
+    transition: background-color 0.3s, color 0.3s;
+    &:hover {
+      background-color: #fff;
+      color: #242424;
+    }
+  }
+}

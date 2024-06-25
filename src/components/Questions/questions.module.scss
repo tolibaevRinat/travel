@@ -1,0 +1,72 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.body {
+  max-width: toRem(780);
+  margin: 0 auto;
+}
+.title {
+  @include adaptiveValue(margin-bottom, 40, 20, $maxWidthContainer, 320);
+}
+:global {
+  .szh-accordion__item-content {
+    transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+  }
+  .szh-accordion__item.szh-accordion__item--status-entered .szh-accordion__item-btn {
+    &::before {
+      rotate: 60deg;
+      right: toRem(20);
+    }
+    &::after {
+      rotate: -60deg;
+      right: toRem(25);
+    }
+  }
+  .szh-accordion__item-btn {
+    text-align: left;
+    text-wrap: balance;
+    width: 100%;
+    padding: toRem(10);
+    @media (min-width: toEm($mobile)) {
+      padding: toRem(20);
+    }
+    padding-right: toRem(40);
+
+    font-size: toRem(20);
+    color: #fff;
+    font-weight: 400;
+
+    position: relative;
+
+    border-bottom: toRem(1) solid #383838;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: toRem(10);
+      height: toRem(1);
+      background-color: #fff;
+
+      position: absolute;
+      z-index: 5;
+      top: 50%;
+      right: toRem(20);
+      translate: 0 -50%;
+      transition: top 0.3s, rotate 0.3s, right 0.3s;
+    }
+    &::before {
+      rotate: 90deg;
+    }
+  }
+  .szh-accordion__item-panel {
+    padding: toRem(10);
+    @media (min-width: toEm($mobile)) {
+      padding: toRem(20);
+    }
+    font-size: toRem(14);
+    font-weight: 300;
+    color: #909090;
+  }
+}
