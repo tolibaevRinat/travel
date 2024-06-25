@@ -11,12 +11,12 @@
   background-color: $backgroundColor;
 }
 .body {
-  padding-top: toRem(14);
+  padding: toRem(14) 0;
   @media (min-width: toEm($mobile)) {
-    padding-top: toRem(20);
+    padding: toRem(20) 0;
   }
   @media (min-width: toEm(1440.98)) {
-    padding-top: toRem(44);
+    padding: toRem(30) 0;
   }
   @media (max-width: toEm($tablet)) {
     justify-content: space-between;

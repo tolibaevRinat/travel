@@ -13,6 +13,7 @@
 /* Убираем внешние отступы */
 :where(body, h1, h2, h3, h4, p, ul, ol, li, figure, figcaption, blockquote, dl, dd) {
   margin: 0;
+  font-weight: 400;
 }
 
 /* Выставляем основные настройки по-умолчанию для body */

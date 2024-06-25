@@ -1,0 +1,132 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.body {
+  gap: toRem(50);
+}
+.logo {
+  text-transform: uppercase;
+  align-self: center;
+  font-family: 'Cormorant';
+  font-size: toRem(26);
+  @media (min-width: toEm(1440.98)) {
+    font-size: toRem(32);
+  }
+  color: #fff;
+  letter-spacing: toRem(2);
+
+  text-wrap: nowrap;
+}
+.root {
+  padding-bottom: toRem(40);
+  :global {
+    .szh-accordion {
+      padding: toRem(20) toRem(0);
+      @media (min-width: toEm($mobileSmall)) {
+        padding: toRem(20) toRem(10);
+      }
+      @media (min-width: toEm($tablet)) {
+        padding: toRem(44) toRem(22);
+      }
+      border-top: toRem(1) solid #c8ae97;
+      border-bottom: toRem(1) solid #c8ae97;
+
+      @media (min-width: toEm($mobile)) {
+        display: flex;
+        gap: toRem(10);
+      }
+
+      @media (min-width: toEm($mobile)) {
+        justify-content: space-between;
+      }
+      @media (min-width: toEm($tablet)) {
+        justify-content: space-around;
+      }
+    }
+    .szh-accordion__item-btn {
+      color: #fff;
+      margin-bottom: toRem(20);
+      @media (max-width: toEm($mobile)) {
+        width: 100%;
+        text-align: left;
+        padding-bottom: toRem(20);
+      }
+
+      @media (min-width: toEm($mobile)) {
+        pointer-events: none;
+      }
+
+      @media (max-width: toEm($mobile)) {
+        font-size: toRem(20);
+        font-weight: 400;
+
+        position: relative;
+
+        border-bottom: toRem(1) solid #383838;
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          width: toRem(10);
+          height: toRem(1);
+          background-color: #fff;
+
+          position: absolute;
+          z-index: 5;
+          top: 50%;
+          right: toRem(20);
+          translate: 0 -50%;
+          transition: top 0.3s, rotate 0.3s, right 0.3s;
+        }
+        &::before {
+          rotate: 90deg;
+        }
+      }
+    }
+    @media (max-width: toEm($mobile)) {
+      .szh-accordion__item.szh-accordion__item--status-entered .szh-accordion__item-btn {
+        &::before {
+          rotate: 60deg;
+          right: toRem(18);
+        }
+        &::after {
+          rotate: -60deg;
+          right: toRem(23);
+        }
+      }
+    }
+
+    .szh-accordion__item-content {
+      transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+      & ul li,
+      & ul li span {
+        &:not(:last-child) {
+          margin-bottom: toRem(10);
+        }
+      }
+      & a {
+        color: #909090;
+        font-weight: 300;
+        @media (any-hover: hover) {
+          transition: color 0.3s;
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+    @media (max-width: toEm($mobile)) {
+      .szh-accordion__item-panel {
+        padding-bottom: toRem(20);
+      }
+    }
+  }
+}
+.subtitle {
+  align-self: center;
+  font-weight: 300;
+
+  text-align: center;
+}
