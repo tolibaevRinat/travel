@@ -1,6 +1,10 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
+
+import { ItemsModal } from '../ItemsModal/';
 
 import styles from './hero.module.scss';
+
 export const Hero = () => {
   return (
     <section className={`${styles.hero}`}>
@@ -23,9 +27,18 @@ export const Hero = () => {
             конца путь создание изысканного напитка, а в конце накроем для Вас стол и в теплом кругу
             попробуем наши вина
           </p>
-          <button className={`${styles.reservation} f-cen`} type="button">
-            Забронировать
-          </button>
+
+          <Popup
+            trigger={
+              <button className={`${styles.reservation} f-cen`} type="button">
+                Забронировать
+              </button>
+            }
+            modal
+            nested
+          >
+            {(close) => <ItemsModal close={close} />}
+          </Popup>
         </div>
         <div className={`${styles.img} rel f-cen`}>
           <picture className={`${styles.img} rel z-5`}>
