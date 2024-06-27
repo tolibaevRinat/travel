@@ -1,18 +1,66 @@
+import { useEffect, useRef } from 'react';
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
-import { useMediaQuery } from 'react-responsive';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './footer.module.scss';
 
-export const Footer = () => {
-  const isMobile = useMediaQuery({ minWidth: 767.98 });
+export const Footer = ({ isMobile }) => {
+  const titleRef = useRef(null);
+  const itemRefs = useRef([]);
+
+  itemRefs.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !itemRefs.current.includes(el)) {
+      itemRefs.current.push(el);
+    }
+  };
+
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    if (isMobile) {
+      const title = titleRef.current;
+
+      gsap.from(title, {
+        y: 50,
+        opacity: 0,
+        duration: 2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.reserv',
+          start: 'top 80%',
+        },
+      });
+
+      itemRefs.current.forEach((item, index) => {
+        gsap.from(item, {
+          y: 50,
+          opacity: 0,
+          duration: 2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 100%',
+          },
+          delay: index * 0.2, // задержка для последовательной анимации
+        });
+      });
+    }
+  }, [isMobile]);
   return (
     <section className={`${styles.root}`}>
       <div className={`${styles.body} container flex f-d-col`}>
-        <a className={`${styles.logo}`} href="#!">
+        <a ref={titleRef} className={`${styles.logo}`} href="#!">
           Gerey-Tuz
         </a>
         <Accordion transition transitionTimeout={300}>
-          <AccordionItem header="Навигация" disabled={isMobile} initialEntered={isMobile}>
+          <AccordionItem
+            ref={addToRefs}
+            header="Навигация"
+            disabled={isMobile}
+            initialEntered={isMobile}
+          >
             <ul>
               <li>
                 <a href="#!">О нас</a>
@@ -29,7 +77,12 @@ export const Footer = () => {
             </ul>
           </AccordionItem>
 
-          <AccordionItem header="Адрес" disabled={isMobile} initialEntered={isMobile}>
+          <AccordionItem
+            ref={addToRefs}
+            header="Адрес"
+            disabled={isMobile}
+            initialEntered={isMobile}
+          >
             <ul>
               <li>
                 <a
@@ -46,7 +99,12 @@ export const Footer = () => {
             </ul>
           </AccordionItem>
 
-          <AccordionItem header="Контакты" disabled={isMobile} initialEntered={isMobile}>
+          <AccordionItem
+            ref={addToRefs}
+            header="Контакты"
+            disabled={isMobile}
+            initialEntered={isMobile}
+          >
             <ul>
               <li>
                 <a href="tel:792899623931">+7 928 9962-39-31</a>
@@ -60,7 +118,12 @@ export const Footer = () => {
             </ul>
           </AccordionItem>
 
-          <AccordionItem header="Контакты" disabled={isMobile} initialEntered={isMobile}>
+          <AccordionItem
+            ref={addToRefs}
+            header="Контакты"
+            disabled={isMobile}
+            initialEntered={isMobile}
+          >
             <ul>
               <li>
                 <a href="#!">Вконтакте</a>
@@ -71,7 +134,7 @@ export const Footer = () => {
             </ul>
           </AccordionItem>
         </Accordion>
-        <h3 className={`${styles.subtitle}`}>
+        <h3 ref={addToRefs} className={`${styles.subtitle}`}>
           @2020 ООО Агрофирма «Герей-Тюз». Все права защищены.
         </h3>
       </div>

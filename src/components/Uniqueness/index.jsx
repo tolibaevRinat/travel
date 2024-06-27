@@ -1,4 +1,7 @@
+import { useEffect, useRef } from 'react';
 import Popup from 'reactjs-popup';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './uniqueness.module.scss';
 
@@ -38,14 +41,60 @@ const uniList = [
 прямо с винодельни.`,
   },
 ];
-export const Uniqueness = () => {
+
+export const Uniqueness = ({ isMobile }) => {
+  const titleRef = useRef(null);
+  const itemRefs = useRef([]);
+
+  itemRefs.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !itemRefs.current.includes(el)) {
+      itemRefs.current.push(el);
+    }
+  };
+
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    if (isMobile) {
+      const title = titleRef.current;
+
+      gsap.from(title, {
+        y: 50,
+        opacity: 0,
+        duration: 2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.uniqueness',
+          start: 'top 80%',
+        },
+      });
+
+      itemRefs.current.forEach((item, index) => {
+        gsap.from(item, {
+          y: 50,
+          opacity: 0,
+          duration: 2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 100%',
+          },
+          delay: index * 0.2, // задержка для последовательной анимации
+        });
+      });
+    }
+  }, [isMobile]);
+
   return (
-    <section className={`${styles.uniqueness}`}>
+    <section className={`${styles.uniqueness} uniqueness`}>
       <div className={`${styles.body} container flex f-d-col`}>
-        <h2 className={`${styles.title} big-title`}>В чем уникальность?</h2>
+        <h2 className={`${styles.title} big-title`} ref={titleRef}>
+          В чем уникальность?
+        </h2>
         <ul className={`${styles.list}`}>
           {uniList.map((item, index) => (
-            <li key={index} className={`${styles.item}`}>
+            <li key={index} className={`${styles.item}`} ref={addToRefs}>
               <div className={`${styles.main} flex a-i-c`}>
                 <div className={`${styles.number}`}>0{index + 1}</div>
                 <h3 className={`${styles.subtitle}`}>{item.title}</h3>

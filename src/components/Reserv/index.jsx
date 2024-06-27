@@ -1,18 +1,66 @@
+import { useEffect, useRef } from 'react';
 import Popup from 'reactjs-popup';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './reserv.module.scss';
 import { Modal } from '../Modal';
 
-export const Reserv = () => {
+export const Reserv = ({ isMobile }) => {
+  const titleRef = useRef(null);
+  const itemRefs = useRef([]);
+
+  itemRefs.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !itemRefs.current.includes(el)) {
+      itemRefs.current.push(el);
+    }
+  };
+
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    if (isMobile) {
+      const title = titleRef.current;
+
+      gsap.from(title, {
+        y: 50,
+        opacity: 0,
+        duration: 2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.reserv',
+          start: 'top 80%',
+        },
+      });
+
+      itemRefs.current.forEach((item, index) => {
+        gsap.from(item, {
+          y: 50,
+          opacity: 0,
+          duration: 2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 100%',
+          },
+          delay: index * 0.2, // задержка для последовательной анимации
+        });
+      });
+    }
+  }, [isMobile]);
+
   return (
-    <section className={`${styles.reserv}`}>
+    <section className={`${styles.reserv} reserv`}>
       <div className={`${styles.body} container`}>
-        <h2 className={`${styles.title} big-title`}>Забронируйте экскурсию прямо сейчас</h2>
+        <h2 className={`${styles.title} big-title`} ref={titleRef}>
+          Забронируйте экскурсию прямо сейчас
+        </h2>
         <ul className={`${styles.list} flex f-d-col `}>
           <Popup
             trigger={
               <li>
-                <article className={`${styles.item} flex`}>
+                <article className={`${styles.item} flex`} ref={addToRefs}>
                   <picture className={`${styles.img} rel z-5`}>
                     <source srcSet="reserv.webp" type="image/webp" />
                     <img src="reserv.jpg" alt="Девушка" />
@@ -53,7 +101,7 @@ export const Reserv = () => {
           <Popup
             trigger={
               <li>
-                <article className={`${styles.item} flex`}>
+                <article className={`${styles.item} flex`} ref={addToRefs}>
                   <picture className={`${styles.img} rel z-5`}>
                     <source srcSet="reserv.webp" type="image/webp" />
                     <img src="reserv.jpg" alt="Девушка" />
@@ -92,7 +140,7 @@ export const Reserv = () => {
           <Popup
             trigger={
               <li>
-                <article className={`${styles.item} flex`}>
+                <article className={`${styles.item} flex`} ref={addToRefs}>
                   <picture className={`${styles.img} rel z-5`}>
                     <source srcSet="reserv.webp" type="image/webp" />
                     <img src="reserv.jpg" alt="Девушка" />
@@ -135,7 +183,7 @@ export const Reserv = () => {
           <Popup
             trigger={
               <li>
-                <article className={`${styles.item} flex`}>
+                <article className={`${styles.item} flex`} ref={addToRefs}>
                   <picture className={`${styles.img} rel z-5`}>
                     <source srcSet="reserv.webp" type="image/webp" />
                     <img src="reserv.jpg" alt="Девушка" />

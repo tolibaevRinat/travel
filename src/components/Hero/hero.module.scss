@@ -91,12 +91,6 @@
 
   color: #c8ae97;
   font-size: toRem(16);
-
-  @media (min-width: toEm($maxWidthLayout)) {
-    position: absolute;
-    bottom: 0;
-    right: toRem(-244);
-  }
   @media (any-hover: hover) {
     transition: background-color 0.3s, color 0.3s;
     &:hover {

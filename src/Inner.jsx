@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -27,13 +28,15 @@ const Inner = () => {
     dispatch(getAllReviews());
   };
 
+  const isMobile = useMediaQuery({ minWidth: 767.98 });
+
   return (
     <div className="wrapper">
       <Header />
       <main className="page">
-        <Hero />
-        <Uniqueness />
-        <Reserv />
+        <Hero isMobile={isMobile} />
+        <Uniqueness isMobile={isMobile} />
+        <Reserv isMobile={isMobile} />
         <section className="reviews">
           <div className="container flex f-d-col">
             <ul className="reviews__list">
@@ -50,9 +53,9 @@ const Inner = () => {
             )}
           </div>
         </section>
-        <Questions />
+        <Questions isMobile={isMobile} />
       </main>
-      <Footer />
+      <Footer isMobile={isMobile} />
     </div>
   );
 };
