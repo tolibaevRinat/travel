@@ -1,0 +1,52 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.popup {
+  background-color: #fff;
+  padding: toRem(20) toRem(20) toRem(40);
+  border-radius: toRem(16);
+  width: toRem(480);
+  @media (max-width: toEm($mobileSmall)) {
+    width: toRem(310);
+    padding: toRem(10);
+  }
+}
+.p_top {
+  margin-bottom: toRem(20);
+  @media (min-width: toEm($mobileSmall)) {
+    margin-bottom: toRem(40);
+  }
+  font-size: toRem(18);
+  font-weight: 500;
+  color: #191919;
+}
+.p_btn {
+  path {
+    fill: rgba(72, 72, 74, 0.2);
+    transition: fill 0.3s;
+  }
+  path:not([id='circle']) {
+    stroke: #242428;
+    transition: stroke 0.3s;
+  }
+  @media (any-hover: hover) {
+    transition: all 0.3s;
+    &:hover {
+      path {
+        fill: rgb(0, 0, 0);
+      }
+      path:not([id='circle']) {
+        stroke: #fff;
+      }
+    }
+  }
+}
+.error {
+  font-size: toRem(24);
+  padding: toRem(10);
+  border-radius: toRem(8);
+  background-color: #fff;
+
+  text-align: center;
+}

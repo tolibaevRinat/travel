@@ -1,6 +1,8 @@
-import React from 'react';
+import Popup from 'reactjs-popup';
 
 import styles from './uniqueness.module.scss';
+
+import { Modal } from '../Modal';
 
 const uniList = [
   {
@@ -52,9 +54,19 @@ export const Uniqueness = () => {
             </li>
           ))}
         </ul>
-        <button className={`${styles.btn} f-cen`} type="button">
-          К экскурсиям
-        </button>
+        <Popup
+          trigger={
+            <button className={`${styles.btn} f-cen`} type="button">
+              К экскурсиям
+            </button>
+          }
+          modal
+          nested
+          onOpen={() => (document.body.style.overflow = 'hidden')}
+          onClose={() => (document.body.style.overflow = 'auto')}
+        >
+          <Modal />
+        </Popup>
       </div>
     </section>
   );

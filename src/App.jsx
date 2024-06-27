@@ -1,5 +1,13 @@
-import Inner from './Inner';
+import { Suspense, lazy } from 'react';
 
-const App = () => <Inner />;
+import { Preloader } from './components/Preloader';
+
+const Inner = lazy(() => import('./Inner'));
+
+const App = () => (
+  <Suspense fallback={<Preloader />}>
+    <Inner />
+  </Suspense>
+);
 
 export default App;

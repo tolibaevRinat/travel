@@ -1,0 +1,230 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.root {
+  background-color: #fff;
+  border-radius: toRem(16);
+
+  color: #191919;
+
+  width: toRem(310);
+  padding: toRem(10);
+  @media (min-width: toEm($mobileSmall)) {
+    padding: toRem(20) toRem(20) toRem(0);
+
+    width: toRem(480);
+  }
+  overflow-y: auto;
+}
+.top {
+  margin-bottom: toRem(20);
+  @media (min-width: toEm($mobile)) {
+    margin-bottom: toRem(50);
+  }
+}
+.btn {
+  path {
+    fill: rgba(72, 72, 74, 0.2);
+    transition: fill 0.3s;
+  }
+  path:not([id='circle']) {
+    stroke: #242428;
+    transition: stroke 0.3s;
+  }
+  @media (any-hover: hover) {
+    transition: all 0.3s;
+    &:hover {
+      path {
+        fill: rgb(0, 0, 0);
+      }
+      path:not([id='circle']) {
+        stroke: #fff;
+      }
+    }
+  }
+}
+.date_title {
+  font-size: toRem(20);
+  margin-bottom: toRem(20);
+}
+.date_btns {
+  gap: toRem(8);
+  margin-bottom: toRem(30);
+  flex-wrap: wrap;
+}
+.date_btn {
+  gap: toRem(12);
+  text-align: center;
+
+  div {
+    border-radius: 50%;
+    background-color: #eaeaea;
+    width: toRem(56);
+    height: toRem(56);
+
+    color: #909090;
+    font-size: toRem(14);
+    font-weight: 300;
+
+    transition: background-color 0.3s, color 0.3s;
+  }
+  span {
+    font-size: toRem(14);
+    font-weight: 300;
+    color: #909090;
+    transition: font-size 0.3s;
+  }
+  @media (any-hover: hover) {
+    &:hover div {
+      background-color: #191919;
+      color: #fff;
+    }
+    &:hover span {
+      color: #191919;
+    }
+  }
+
+  &.active div {
+    background-color: #191919;
+    color: #fff;
+  }
+  &.active span {
+    color: #191919;
+  }
+}
+.time {
+  margin-bottom: toRem(20);
+}
+.time_title {
+  margin-bottom: toRem(20);
+  font-size: toRem(20);
+}
+.time_hours {
+  flex-wrap: wrap;
+}
+.time_btn {
+  width: toRem(130);
+  height: toRem(50);
+
+  border-radius: toRem(16);
+  border: toRem(1) solid #d9d9d9;
+
+  font-size: toRem(16);
+  transition: background-color 0.3s, color 0.3s, border;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: #191919;
+      color: #fff;
+      border: toRem(1) solid #191919;
+    }
+  }
+  &.check {
+    background-color: #191919;
+    color: #fff;
+    border: toRem(1) solid #191919;
+  }
+}
+.count {
+  margin-bottom: toRem(35);
+  flex-wrap: wrap;
+}
+.count_title {
+  font-size: toRem(20);
+}
+.count_btn,
+.count_item {
+  font-size: toRem(16);
+  font-weight: 300;
+
+  border-radius: toRem(16);
+  border: toRem(1) solid #d9d9d9;
+}
+.count_btn {
+  padding: toRem(12) toRem(16);
+  @media (any-hover: hover) {
+    transition: background-color 0.3s, color 0.3s;
+    &:hover {
+      background-color: #191919;
+      color: #fff;
+    }
+  }
+  &[disabled] {
+    background-color: transparent;
+    color: #191919;
+  }
+}
+.count_item {
+  padding: toRem(18) toRem(20);
+}
+.order {
+  padding-bottom: toRem(30);
+}
+.order_main {
+  margin-bottom: toRem(22);
+}
+.order_body {
+  padding: toRem(8) 0;
+  gap: toRem(10);
+}
+.order_top {
+  margin-bottom: toRem(16);
+}
+.order_content {
+  gap: toRem(18);
+}
+.img {
+  img {
+    display: none;
+    @media (min-width: toEm($mobileSmall)) {
+      display: block;
+      width: toRem(64);
+      height: toRem(64);
+      border-radius: toRem(8);
+    }
+  }
+}
+.subtitle {
+  font-size: toRem(16);
+  flex-grow: 1;
+}
+.detailes {
+  color: #141417;
+  span {
+    font-size: toRem(12);
+    font-weight: 300;
+    line-height: calc(15 / 12);
+  }
+}
+.order_price {
+  align-self: flex-end;
+  color: #141417;
+  font-size: toRem(24);
+  font-weight: 500;
+  span {
+    font-size: toRem(16);
+    font-weight: 700;
+  }
+  text-wrap: nowrap;
+}
+.order_btn {
+  font-family: Cormorant;
+  background-color: #191919;
+  width: 100%;
+  height: toRem(64);
+  border-radius: toRem(16);
+  padding: toRem(5);
+
+  color: #fff;
+  font-size: toRem(16);
+  font-weight: 500;
+  letter-spacing: toRem(1);
+
+  @media (any-hover: hover) {
+    transition: background-color 0.3s, color 0.3s;
+    &:hover {
+      background-color: #c8ae97;
+      color: #191919;
+    }
+  }
+}

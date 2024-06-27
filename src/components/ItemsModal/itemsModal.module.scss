@@ -2,8 +2,63 @@
 @import '../../scss/modules/functions';
 @import '../../scss/modules/mixins';
 
-:global {
-  .popup-overlay {
-    background-color: rgba(0, 0, 0, 0.7);
+.root {
+  padding: toRem(20);
+  border-radius: toRem(16);
+  border: toRem(1) solid #d9d9d9;
+
+  color: #191919;
+
+  cursor: pointer;
+  @media (any-hover: hover) {
+    transition: box-shadow 0.3s;
+    &:hover {
+      box-shadow: 0 0 toRem(10) #d9d9d9;
+    }
+  }
+  gap: toRem(40);
+  @media (max-width: toEm($mobileSmall)) {
+    gap: toRem(0);
+    justify-content: flex-start;
+  }
+  overflow-y: auto;
+}
+.content {
+  @media (min-width: toEm($mobile)) {
+    flex-grow: 1;
+  }
+  @media (max-width: toEm($mobileSmall)) {
+    width: 100%;
+  }
+}
+
+.img {
+  img {
+    display: none;
+    @media (min-width: toEm($mobileSmall)) {
+      display: block;
+      flex-basis: toRem(100);
+      flex-shrink: 0;
+    }
+  }
+}
+.title {
+  font-size: toRem(20);
+  font-weight: 500;
+  flex-grow: 1;
+}
+.descr {
+  color: #909090;
+  font-size: toRem(14);
+  line-height: calc(20 / 14);
+}
+.price {
+  font-size: toRem(20);
+  font-weight: 700;
+
+  span {
+    font-size: toRem(14);
+    color: #909090;
+    font-weight: 400;
   }
 }

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './reviewsItem.module.scss';
 export const ReviewsItem = ({ color, author, status, date, description }) => {
   return (

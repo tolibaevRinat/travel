@@ -8,13 +8,21 @@ export const getExcurs = createAsyncThunk('excurs/getExcurs', async () => {
 
 const initialState = {
   excurs: [],
+  checkExcurs: {},
   status: 'loading',
 };
 
 export const excursSlice = createSlice({
   name: 'excurs',
   initialState,
-  reducers: {},
+  reducers: {
+    setCheckExcur(state, action) {
+      state.checkExcurs = action.payload;
+    },
+    clearCheсkExcur(state) {
+      state.checkExcurs = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getExcurs.pending, (state) => {
@@ -31,5 +39,7 @@ export const excursSlice = createSlice({
       });
   },
 });
+
+export const { setCheckExcur, clearCheсkExcur } = excursSlice.actions;
 
 export default excursSlice.reducer;

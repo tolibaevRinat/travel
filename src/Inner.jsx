@@ -26,11 +26,6 @@ const Inner = () => {
   const handleShowMore = () => {
     dispatch(getAllReviews());
   };
-  useEffect(() => {
-    if (reviews.length > 4) {
-      window.scrollTo(0, document.documentElement.scrollHeight);
-    }
-  }, [reviews.length]);
 
   return (
     <div className="wrapper">
@@ -57,7 +52,7 @@ const Inner = () => {
         </section>
         <Questions />
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

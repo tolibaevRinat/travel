@@ -1,0 +1,11 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.root {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

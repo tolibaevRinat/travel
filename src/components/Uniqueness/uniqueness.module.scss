@@ -2,6 +2,9 @@
 @import '../../scss/modules/functions';
 @import '../../scss/modules/mixins';
 
+.uniqueness {
+  margin-bottom: toRem(40);
+}
 .title {
   @include adaptiveValue(margin-bottom, 64, 20, $maxWidthContainer, 320);
 }
